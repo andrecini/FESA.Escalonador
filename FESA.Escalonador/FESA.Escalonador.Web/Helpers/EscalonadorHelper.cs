@@ -11,32 +11,32 @@ namespace FESA.Escalonador.Web.Helpers
         {
             var escalonador = new EscalonadorBase();
             
-            if ((Tipos)tipo > Tipos.FCFS)
+            if ((Tipos)tipo == Tipos.FCFS)
             {
                 escalonador = new FCFS(chegadas, tamanhos);
                 return CriarResultado(escalonador);
             }
-            else if ((Tipos)tipo > Tipos.SJF)
+            else if ((Tipos)tipo == Tipos.SJF)
             {
                 escalonador = new SJF(chegadas, tamanhos);
                 return CriarResultado(escalonador);
             }
-            else if ((Tipos)tipo > Tipos.RR)
+            else if ((Tipos)tipo == Tipos.RR)
             {
                 escalonador = new RR(chegadas, tamanhos);
                 return CriarResultado(escalonador);
             }
-            else if ((Tipos)tipo > Tipos.SRTF)
+            else if ((Tipos)tipo == Tipos.SRTF)
             {
                 escalonador = new SRTF(chegadas, tamanhos, prioridades);
                 return CriarResultado(escalonador);
             }
-            else if ((Tipos)tipo > Tipos.PRIOc)
+            else if ((Tipos)tipo == Tipos.PRIOc)
             {
                 escalonador = new PRIOc(chegadas, tamanhos, prioridades);
                 return CriarResultado(escalonador);
             }
-            else if ((Tipos)tipo > Tipos.PRIOp)
+            else if ((Tipos)tipo == Tipos.PRIOp)
             {
                 escalonador = new PRIOp(chegadas, tamanhos, prioridades);
                 return CriarResultado(escalonador);

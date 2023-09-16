@@ -1,4 +1,9 @@
-﻿var chegadas = [];
+﻿document.addEventListener("DOMContentLoaded", function (event) {
+    trocarTipo();
+});
+
+
+var chegadas = [];
 var tamanhos = [];
 var prioridades = [];
 var contador = 1;
@@ -27,6 +32,10 @@ function adicionarLinha() {
     cell2.innerHTML = tempo;
     cell3.innerHTML = prioridade;
 
+    adicionarInputHidden(chegada, "chegadas");
+    adicionarInputHidden(tempo, "tamanhos");
+    adicionarInputHidden(prioridade, "prioridades");
+
     // Adicionar os dados às listas
     chegadas.push(chegada);
     tamanhos.push(tempo);
@@ -54,6 +63,16 @@ function validarCamposInput() {
     return true;
 }
 
+function adicionarInputHidden(valor, nome) {
+    var inputHidden = document.createElement("input");
+    inputHidden.type = "hidden";
+    inputHidden.name = nome;
+    inputHidden.value = valor;
+
+    var container = document.getElementById("inputsHiddenContainer");
+    container.appendChild(inputHidden);
+}
+
 function ExibirErro(mensagem) {
     jSuites.notification({
         error: 1,
@@ -69,17 +88,15 @@ function ExibirInformacao(mensagem) {
     });
 }
 
-function calcular() {
-    var model = {
-        chegadas: [1, 2],
-        tamanhos: [1, 2],
-        prioridades: [1, 2]
-    };
+function trocarTipo() {
+    const select = $("#Tipo");
+    const tipo = select.val();
+    console.log(tipo);
+    let tipoHidden = $("#TipoHidden");
 
-    $.ajax({
-        url: $("#urlCalcular").val(),
-        type: "POST",
-        data: model,
-        dataType: "json"
-    });
+    select.on('change', function () {
+        $("#select-integracao").prop("disabled", false);
+        tipoHidden.val(select.val());
+        console.log(tipoHidden.val());
+    })
 }

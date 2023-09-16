@@ -20,10 +20,10 @@ namespace FESA.Escalonador.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Calcular(List<int> chegadas, List<int> tamanhos, List<int> prioridades)
+        public IActionResult Calcular(List<int> chegadas, List<int> tamanhos, List<int> prioridades, int tipo)
         {
             Resultado resultado;
-            var tipo = 1;
+
             try
             {
                 resultado = EscalonadorHelper.RetornarResultadoDasExecucoes(chegadas, tamanhos, prioridades, tipo);

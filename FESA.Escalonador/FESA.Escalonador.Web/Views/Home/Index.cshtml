@@ -5,35 +5,46 @@
 }
 <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
 
-<select id="Tipo" class="form-select w-auto mb-3" aria-label="Tipo">
-    <option value="0" selected>Selecione uma Opção</option>
-    <option value="1">FCFS</option>
-    <option value="2">SJF</option>
-    <option value="3">RR</option>
-    <option value="4">SRTF</option>
-    <option value="5">PRIOc</option>
-    <option value="6">PRIOp</option>
-</select>
+
 
 <div class="card">
-    <form class="card-body row align-items-end g-2">
-        <div class="col">
-            <label for="Chegada" class="form-label">Chegada</label>
-            <input type="number" class="form-control" id="Chegada" placeholder="Digite o tempo de chegada" min="0" required>
-        </div>
-        <div class="col">
-            <label for="Chegada" class="form-label">Tempo de Execucao</label>
-            <input type="number" class="form-control" id="Tamanho" placeholder="Digite o tempo de execução" min="1" required>
-        </div>
-        <div class="col">
-            <label for="Prioridade" class="form-label">Prioridade</label>
-            <input type="number" class="form-control" id="Prioridade" placeholder="Digite a prioridade" min="1" required>
-        </div>
-        <div class="col-auto">
-            <input type="button" class="btn btn-primary" value="Adicionar" onclick="adicionarLinha()" required/>
-        </div>
-        <div class="col-auto">
-            <input type="button" class="btn btn-success" value="Calcular" onclick="calcular()"/>
+    <form asp-action="Calcular" asp-controller="Home" class="card-body">
+
+        <select id="Tipo" class="form-select w-auto mb-3" aria-label="Tipo">
+            <option value="0" selected>Selecione uma Opção</option>
+            <option value="1">FCFS</option>
+            <option value="2">SJF</option>
+            <option value="3">RR</option>
+            <option value="4">SRTF</option>
+            <option value="5">PRIOc</option>
+            <option value="6">PRIOp</option>
+        </select>
+
+        <div class="row align-items-end g-2">
+            <div class="col">
+                <label for="Chegada" class="form-label">Chegada</label>
+                <input type="number" class="form-control" id="Chegada" placeholder="Digite o tempo de chegada" min="0">
+            </div>
+            <div class="col">
+                <label for="Chegada" class="form-label">Tempo de Execucao</label>
+                <input type="number" class="form-control" id="Tamanho" placeholder="Digite o tempo de execução" min="1">
+            </div>
+            <div class="col">
+                <label for="Prioridade" class="form-label">Prioridade</label>
+                <input type="number" class="form-control" id="Prioridade" placeholder="Digite a prioridade" min="1">
+            </div>
+            <div class="col-auto">
+                <input type="button" class="btn btn-primary" value="Adicionar" onclick="adicionarLinha()" />
+            </div>
+            <div class="col-auto">
+                <input type="submit" class="btn btn-success" value="Calcular" />
+            </div>
+
+            <div id="inputsHiddenContainer">
+                <input type="hidden" id="TipoHidden" name="tipo" value="0" />
+                <!-- Os inputs hidden dinâmicos serão adicionados aqui -->
+            </div>
+
         </div>
     </form>
 
@@ -48,7 +59,7 @@
                 </tr>
             </thead>
             <tbody>
-                @* Feito Dinamicamente => site.js *@
+                @* Feito Dinamicamente >= site.js *@
             </tbody>
         </table>
     </div>
@@ -56,7 +67,35 @@
 
 @if (Model != null)
 {
+    <h1> Respostas </h1>
 
+    if (Model.DadosExecucoes != null && Model.DadosExecucoes.Count() > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tempo de Término</th>
+                    <th scope="col">Ativo</th>
+                    <th scope="col">Espera</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dados in Model.DadosExecucoes)
+                {
+                    <tr>
+                        <th scope="row">@dados.Processo</th>
+                        <td>@dados.Termino</td>
+                        <td>@dados.Ativo</td>
+                        <td>@dados.Espera</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <h6><b>Tempo de Execução médio:</b> @Model.TempoMedioExecucao segundos</h6>
+    <h6><b>Tempo de Espera médio:</b> @Model.TempoMedioEspera segundos</h6>
 }
 
 @Html.Hidden("urlCalcular", Url.Action("Calcular", "Home"))

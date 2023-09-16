@@ -21,6 +21,7 @@ namespace FESA.Escalonador.Web.Models
         private void PreencherDadosExecucao()
         {
             var backup = Execucoes.ToArray();
+            DadosExecucoes = new List<DadosExecucao>();
 
             foreach (var e in Execucoes)
             {
@@ -33,6 +34,8 @@ namespace FESA.Escalonador.Web.Models
                 dados.Espera = execucoesRelacionadas.Sum(x => x.Espera);
 
                 Execucoes = Execucoes.Where(x => x.IdProcesso != e.IdProcesso).ToList();
+
+                DadosExecucoes.Add(dados);
             }
 
             Execucoes.AddRange(backup);
@@ -41,6 +44,8 @@ namespace FESA.Escalonador.Web.Models
         private void PreencherResumoExecucao()
         {
             ResumoExecucao resumo = new ResumoExecucao();
+            resumo.Tempos = new List<int>();
+            resumo.Processos = new List<string>();
             resumo.Tempos.Add(Execucoes.FirstOrDefault().Comeco);
 
             foreach (var e in Execucoes)
