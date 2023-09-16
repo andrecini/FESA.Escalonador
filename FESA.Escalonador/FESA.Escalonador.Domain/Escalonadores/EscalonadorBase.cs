@@ -59,5 +59,10 @@ namespace FESA.Escalonador.Domain.Escalonadores
 
             return (decimal)total / _quantidadeDeProcessos;
         }
+
+        public List<Execucao> RetornarExecucoes()
+        {
+            return _execucoes;
+        }
     }
 }

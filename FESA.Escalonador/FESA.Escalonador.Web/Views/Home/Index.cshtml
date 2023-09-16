@@ -1,0 +1,65 @@
+﻿@model Resultado
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+
+<select id="Tipo" class="form-select w-auto mb-3" aria-label="Tipo">
+    <option value="0" selected>Selecione uma Opção</option>
+    <option value="1">FCFS</option>
+    <option value="2">SJF</option>
+    <option value="3">RR</option>
+    <option value="4">SRTF</option>
+    <option value="5">PRIOc</option>
+    <option value="6">PRIOp</option>
+</select>
+
+<div class="card">
+    <form class="card-body row align-items-end g-2">
+        <div class="col">
+            <label for="Chegada" class="form-label">Chegada</label>
+            <input type="number" class="form-control" id="Chegada" placeholder="Digite o tempo de chegada" min="0" required>
+        </div>
+        <div class="col">
+            <label for="Chegada" class="form-label">Tempo de Execucao</label>
+            <input type="number" class="form-control" id="Tamanho" placeholder="Digite o tempo de execução" min="1" required>
+        </div>
+        <div class="col">
+            <label for="Prioridade" class="form-label">Prioridade</label>
+            <input type="number" class="form-control" id="Prioridade" placeholder="Digite a prioridade" min="1" required>
+        </div>
+        <div class="col-auto">
+            <input type="button" class="btn btn-primary" value="Adicionar" onclick="adicionarLinha()" required/>
+        </div>
+        <div class="col-auto">
+            <input type="button" class="btn btn-success" value="Calcular" onclick="calcular()"/>
+        </div>
+    </form>
+
+    <div id="dados" class="card-body align-items-center g-2 d-none">
+        <table id="tabela" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Chegada</th>
+                    <th scope="col">Tempo de Execução</th>
+                    <th scope="col">Prioridade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* Feito Dinamicamente => site.js *@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Model != null)
+{
+
+}
+
+@Html.Hidden("urlCalcular", Url.Action("Calcular", "Home"))
+
+
+<script src="https://jsuites.net/v4/jsuites.js"></script>
