@@ -53,6 +53,8 @@ namespace FESA.Escalonador.Web.Models
                 resumo.Processos.Add($"P{e.IdProcesso}");
                 resumo.Tempos.Add(e.Fim);
             }
+
+            Resumo = resumo;
         }
     }
 }

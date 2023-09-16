@@ -67,11 +67,36 @@
 
 @if (Model != null)
 {
-    <h1> Respostas </h1>
+    <br />
+    <h2> Respostas </h2>
 
     if (Model.DadosExecucoes != null && Model.DadosExecucoes.Count() > 0)
     {
-        <table class="table">
+        <div class="row align-items-start g-2">
+            <div class="col-auto">
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <h5 class="m-0 p-0">|</h5>
+                    <span>0</span>
+                </div>
+            </div>
+
+            @for (int i = 0; i < Model.Resumo.Processos.Count(); i++)
+            {
+                <div class="col-auto">
+                    <h5>@Model.Resumo.Processos.ElementAt(i)</h5>
+                </div>
+
+                <div class="col-auto">
+                    <div class="d-flex align-items-center justify-content-center flex-column">
+                        <h5 class="m-0 p-0">|</h5>
+                        <span>@Model.Resumo.Tempos.ElementAt(i + 1)</span>
+                    </div>
+                </div>                
+            }
+        </div>
+
+
+        <table class="table w-50">
             <thead>
                 <tr>
                     <th scope="col">#</th>
