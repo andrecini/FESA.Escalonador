@@ -23,7 +23,7 @@
         <div class="row align-items-end g-2">
             <div class="col">
                 <label for="Chegada" class="form-label">Chegada</label>
-                <input type="number" class="form-control" id="Chegada" placeholder="Digite o tempo de chegada" min="0">
+                <input type="number" class="form-control" id="Chegada" placeholder="Digite o tempo de chegada" min="0" value="0" disabled>
             </div>
             <div class="col">
                 <label for="Chegada" class="form-label">Tempo de Execucao</label>
@@ -72,7 +72,7 @@
 
     if (Model.DadosExecucoes != null && Model.DadosExecucoes.Count() > 0)
     {
-        <div class="row align-items-start g-2">
+        <div class="row align-items-start g-2 my-4">
             <div class="col-auto">
                 <div class="d-flex align-items-center justify-content-center flex-column">
                     <h5 class="m-0 p-0">|</h5>

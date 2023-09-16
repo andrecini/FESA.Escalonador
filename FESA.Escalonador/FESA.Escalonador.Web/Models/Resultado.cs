@@ -22,20 +22,23 @@ namespace FESA.Escalonador.Web.Models
         {
             var backup = Execucoes.ToArray();
             DadosExecucoes = new List<DadosExecucao>();
+            var execucoesRelacionadas = Execucoes;
 
-            foreach (var e in Execucoes)
+            while (Execucoes.Count > 0)
             {
                 var dados = new DadosExecucao();
-                var execucoesRelacionadas = Execucoes.Where(x => x.IdProcesso == e.IdProcesso);
+                var execucaoAtual = Execucoes.FirstOrDefault();
+                execucoesRelacionadas = Execucoes.Where(x => x.IdProcesso == execucaoAtual.IdProcesso).ToList();
 
-                dados.Processo = $"P{e.IdProcesso}";
+                dados.Processo = $"P{execucaoAtual.IdProcesso}";
                 dados.Termino = execucoesRelacionadas.LastOrDefault().Fim;
-                dados.Ativo = execucoesRelacionadas.Sum(x => x.Fim - x.Comeco);
+                dados.Ativo = execucoesRelacionadas.LastOrDefault().Fim - (execucoesRelacionadas.FirstOrDefault().Comeco - execucoesRelacionadas.FirstOrDefault().Espera);
                 dados.Espera = execucoesRelacionadas.Sum(x => x.Espera);
 
-                Execucoes = Execucoes.Where(x => x.IdProcesso != e.IdProcesso).ToList();
+                Execucoes = Execucoes.Where(x => x.IdProcesso != execucaoAtual.IdProcesso).ToList();
 
                 DadosExecucoes.Add(dados);
+
             }
 
             Execucoes.AddRange(backup);

@@ -2,7 +2,6 @@
     trocarTipo();
 });
 
-
 var chegadas = [];
 var tamanhos = [];
 var prioridades = [];
@@ -14,6 +13,8 @@ function adicionarLinha() {
     if (!validado) {
         return;
     }
+
+    document.getElementById("Chegada").disabled = false;
 
     var tabela = document.getElementById("tabela").getElementsByTagName('tbody')[0];
     var chegada = document.getElementById("Chegada").value;
