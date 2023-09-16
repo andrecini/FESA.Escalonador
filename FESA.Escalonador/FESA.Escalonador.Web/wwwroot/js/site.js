@@ -1,5 +1,6 @@
 ﻿document.addEventListener("DOMContentLoaded", function (event) {
     trocarTipo();
+    validarEnvio();
 });
 
 var chegadas = [];
@@ -49,6 +50,17 @@ function adicionarLinha() {
 
     $("#dados").removeClass('d-none');
     contador++;
+
+    document.getElementById("Chegada").focus();
+}
+
+function limparDados() {
+    chegadas = [];
+    tamanhos = [];
+    prioridades = [];
+
+    var tabela = document.getElementById("tabela").getElementsByTagName('tbody')[0];
+    tabela.innerHTML = "";
 }
 
 function validarCamposInput() {
@@ -57,7 +69,7 @@ function validarCamposInput() {
     const prioridade = $("#Prioridade").val();
 
     if (chegada == '' || tamanho == '' || prioridade == '') {
-        ExibirErro("Preencha os campos corretamente");
+        exibirErro("Preencha os campos corretamente");
         return false;
     }
 
@@ -74,7 +86,7 @@ function adicionarInputHidden(valor, nome) {
     container.appendChild(inputHidden);
 }
 
-function ExibirErro(mensagem) {
+function exibirErro(mensagem) {
     jSuites.notification({
         error: 1,
         name: 'Erro',
@@ -82,7 +94,7 @@ function ExibirErro(mensagem) {
     });
 }
 
-function ExibirInformacao(mensagem) {
+function exibirInformacao(mensagem) {
     jSuites.notification({
         name: 'Info',
         message: mensagem,
@@ -100,4 +112,19 @@ function trocarTipo() {
         tipoHidden.val(select.val());
         console.log(tipoHidden.val());
     })
+}
+
+function validarEnvio() {
+    $("#form").submit(function (e) {
+        var tamanhoLista = tamanhos.length;
+
+        if (tamanhoLista < 5) {
+            e.preventDefault();
+            exibirErro("Adicione no mínimo 5 processos!");
+        }
+        else if ($("#TipoHidden").val() == '0') {
+            e.preventDefault();
+            exibirErro("Selecione uma opção de escalonamento!");
+        }        
+    });
 }

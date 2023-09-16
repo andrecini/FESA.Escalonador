@@ -8,7 +8,7 @@
 
 
 <div class="card">
-    <form asp-action="Calcular" asp-controller="Home" class="card-body">
+    <form id="form" asp-action="Calcular" asp-controller="Home" class="card-body">
 
         <select id="Tipo" class="form-select w-auto mb-3" aria-label="Tipo">
             <option value="0" selected>Selecione uma Opção</option>
@@ -62,6 +62,10 @@
                 @* Feito Dinamicamente >= site.js *@
             </tbody>
         </table>
+
+        <div class="d-flex w-100 justify-content-end">
+            <input type="button" class="btn btn-danger" value="Limpar" onclick="limparDados()" />
+        </div>
     </div>
 </div>
 
@@ -72,31 +76,32 @@
 
     if (Model.DadosExecucoes != null && Model.DadosExecucoes.Count() > 0)
     {
-        <div class="row align-items-start g-2 my-4">
-            <div class="col-auto">
-                <div class="d-flex align-items-center justify-content-center flex-column">
-                    <h5 class="m-0 p-0">|</h5>
-                    <span>0</span>
-                </div>
-            </div>
-
-            @for (int i = 0; i < Model.Resumo.Processos.Count(); i++)
-            {
-                <div class="col-auto">
-                    <h5>@Model.Resumo.Processos.ElementAt(i)</h5>
-                </div>
-
+        <div class="d-flex justify-content-center">
+            <div class="row align-items-start g-2 my-4">
                 <div class="col-auto">
                     <div class="d-flex align-items-center justify-content-center flex-column">
                         <h5 class="m-0 p-0">|</h5>
-                        <span>@Model.Resumo.Tempos.ElementAt(i + 1)</span>
+                        <span>0</span>
                     </div>
-                </div>                
-            }
+                </div>
+
+                @for (int i = 0; i < Model.Resumo.Processos.Count(); i++)
+                {
+                    <div class="col-auto">
+                        <h5>@Model.Resumo.Processos.ElementAt(i)</h5>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="d-flex align-items-center justify-content-center flex-column">
+                            <h5 class="m-0 p-0">|</h5>
+                            <span>@Model.Resumo.Tempos.ElementAt(i + 1)</span>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
 
-
-        <table class="table w-50">
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -119,8 +124,13 @@
         </table>
     }
 
-    <h6><b>Tempo de Execução médio:</b> @Model.TempoMedioExecucao segundos</h6>
-    <h6><b>Tempo de Espera médio:</b> @Model.TempoMedioEspera segundos</h6>
+    <div class="card">
+        <div class="card-body">
+            <h5><b>Tempo de Execução médio:</b> @Model.TempoMedioExecucao segundos</h5>
+            <h5><b>Tempo de Espera médio:</b> @Model.TempoMedioEspera segundos</h5>
+        </div>
+    </div>
+
 }
 
 @Html.Hidden("urlCalcular", Url.Action("Calcular", "Home"))
