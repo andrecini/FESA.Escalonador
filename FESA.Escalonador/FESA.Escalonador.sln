@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{A15B6A41-57D1-4DC8-B077-84AAD71E7994}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1- Web", "1- Web", "{8D967761-BD75-4664-9792-4DDF276D8865}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Tests", "3 - Tests", "{58139435-3471-417D-890F-EB9307CB59B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FESA.Escalonador.Domain", "FESA.Escalonador.Domain\FESA.Escalonador.Domain.csproj", "{C43F35B6-B364-45C9-B215-4BD86E45F170}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C43F35B6-B364-45C9-B215-4BD86E45F170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43F35B6-B364-45C9-B215-4BD86E45F170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43F35B6-B364-45C9-B215-4BD86E45F170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43F35B6-B364-45C9-B215-4BD86E45F170}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C43F35B6-B364-45C9-B215-4BD86E45F170} = {A15B6A41-57D1-4DC8-B077-84AAD71E7994}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBDA37F2-A08D-436B-B617-7E96078305C0}
+	EndGlobalSection
+EndGlobal
