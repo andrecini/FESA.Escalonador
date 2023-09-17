@@ -1,3 +1,5 @@
+![Banner](Assets/Banner.jpg)
+
 # Aplicação de Escalonamento 📊 
 
 A Aplicação em questão é uma ferramenta que permite realizar cálculos de escalonamento de processos utilizando vários algoritmos de escalonamento, incluindo FCFS, SJF, RR, SFRT, PRIOc e PRIOp. Ela permite inserir dados de chegada, tempo de execução e prioridade dos processos, além de escolher o tipo de escalonamento desejado.
@@ -12,6 +14,8 @@ A Aplicação em questão é uma ferramenta que permite realizar cálculos de es
 
 ## Testes Unitários 🧪
  A aplicação inclui testes unitários para garantir a precisão dos algoritmos de escalonamento implementados. A base de testes levou como parâmetro dos os Exercícios dessa lista:
+
+ - 📚 [Download dos Exercícios](Assets/ExercíciosSistemasOperacionais.pdf)
 
 ## Pré-requisitos ⚙️
 Antes de executar a aplicação, certifique-se de ter o seguinte instalado:
