@@ -101,6 +101,61 @@
             </div>
         </div>
 
+        <div id="chart">
+            <div id="eixo-y">
+                @{
+                    var quantidadeProcessos = Model.DadosGrafico.ExecucoesAlinhadas.Count();
+                }
+
+                @for (int i = 1; i <= quantidadeProcessos; i++)
+                {
+                    <span class="label-processo">@($"P{i}")</span>
+                }
+            </div>
+
+            <div class="d-flex flex-column w-100">
+                @foreach (var dadosGrafico in Model.DadosGrafico.ExecucoesAlinhadas)
+                {
+                    <div class="w-100 processo">
+                        @{
+                            var inativo = dadosGrafico.ExecucaoGrafico.PorcentagemInatividade.ToString().Replace(',', '.');
+                        }
+
+                        <div id="inativo" class="bloco inativo" style="width: @inativo% !important"></div>
+                        @for (int i = 0; i < dadosGrafico.ExecucaoGrafico.PorcentagensEspera.Count(); i++)
+                        {
+                            var espera = dadosGrafico.ExecucaoGrafico.PorcentagensEspera[i];
+                            var chegada = dadosGrafico.ExecucaoGrafico.PorcentagensExecucoes[i];
+                            <div id="chegada" class="bloco espera" style="width: @espera.ToString().Replace(',', '.')% !important"></div>
+                            <div id="espera" class="bloco execucao" style="width: @chegada.ToString().Replace(',', '.')% !important"></div>
+                        }
+                    </div>
+                }
+                <div id="eixo-x">
+                    @{
+                        var tamanho = Model.DadosGrafico.ValorTempoEmPorcentagem;
+                    }
+
+                    @for (int i = 1; i <= Model.DadosGrafico.Quantidade; i++)
+                    {
+                        @if (i == 1)
+                        {
+                            <div class="d-flex justify-content-between" style="width: calc(100% / @Model.DadosGrafico.Quantidade) !important">
+                                <p>0</p>
+                                <p>@i</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex justify-content-end" style="width: calc(100% / @Model.DadosGrafico.Quantidade) !important">
+                                <p>@i</p>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -122,18 +177,17 @@
                 }
             </tbody>
         </table>
-    }
 
-    <div class="card">
-        <div class="card-body">
-            <h5><b>Tempo de Execução médio:</b> @Model.TempoMedioExecucao segundos</h5>
-            <h5><b>Tempo de Espera médio:</b> @Model.TempoMedioEspera segundos</h5>
+        <div class="card">
+            <div class="card-body">
+                <h5><b>Tempo de Execução médio:</b> @Model.TempoMedioExecucao segundos</h5>
+                <h5><b>Tempo de Espera médio:</b> @Model.TempoMedioEspera segundos</h5>
+            </div>
         </div>
-    </div>
+    }
 }
 
 @Html.Hidden("urlCalcular", Url.Action("Calcular", "Home"))
 
 
 <script src="https://jsuites.net/v4/jsuites.js"></script>
-

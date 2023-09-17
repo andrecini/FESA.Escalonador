@@ -20,3 +20,60 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#chart {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+#eixo-y {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: auto;
+    border-right: black 2px solid;
+}
+
+.label-processo {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin: 2px 2px;
+    font-weight: 700;
+}
+
+.processo {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 2px 0;
+}
+
+.bloco {
+    height: 30px;
+}
+
+.inativo {
+    background-color: transparent;
+}
+
+.espera {
+    background-color: lightgray;
+}
+
+.execucao {
+    background-color: dodgerblue;
+}
+
+#eixo-x {
+    border-top: black 2px solid;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+}
+

@@ -125,6 +125,6 @@ function validarEnvio() {
         else if ($("#TipoHidden").val() == '0') {
             e.preventDefault();
             exibirErro("Selecione uma opção de escalonamento!");
-        }        
+        }
     });
 }

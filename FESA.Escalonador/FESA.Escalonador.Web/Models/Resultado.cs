@@ -8,6 +8,7 @@ namespace FESA.Escalonador.Web.Models
         public string Mensagem { get; set; }
         public List<DadosExecucao> DadosExecucoes { get; set; }
         public ResumoExecucao Resumo { get; set; }
+        public DadosGrafico DadosGrafico { get; set; }
         public decimal TempoMedioExecucao { get; set; }
         public decimal TempoMedioEspera { get; set; }  
         public List<Execucao> Execucoes { get; set; }
@@ -16,6 +17,7 @@ namespace FESA.Escalonador.Web.Models
         {
             PreencherDadosExecucao();
             PreencherResumoExecucao();
+            PreencherDadosGrafico();
         }
 
         private void PreencherDadosExecucao()
@@ -58,6 +60,11 @@ namespace FESA.Escalonador.Web.Models
             }
 
             Resumo = resumo;
+        }
+
+        private void PreencherDadosGrafico()
+        {
+            DadosGrafico = new DadosGrafico(Execucoes);
         }
     }
 }
