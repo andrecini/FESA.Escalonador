@@ -107,7 +107,7 @@
                     var quantidadeProcessos = Model.DadosGrafico.ExecucoesAlinhadas.Count();
                 }
 
-                @for (int i = 1; i <= quantidadeProcessos; i++)
+                @for (int i = quantidadeProcessos; i > 0; i--)
                 {
                     <span class="label-processo">@($"P{i}")</span>
                 }
