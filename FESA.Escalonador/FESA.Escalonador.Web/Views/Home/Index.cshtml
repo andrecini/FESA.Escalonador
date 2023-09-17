@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
 
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
 
 
 <div class="card">
@@ -76,6 +76,9 @@
 
     if (Model.DadosExecucoes != null && Model.DadosExecucoes.Count() > 0)
     {
+        <input id="sucesso" type="hidden" value="@(Model.Sucesso ? "true" : "false")"/>
+        <input id="mensagem" type="hidden" value="@Model.Mensagem"/>
+
         <div class="d-flex justify-content-center">
             <div class="row align-items-start g-2 my-4">
                 <div class="col-auto">
@@ -180,8 +183,8 @@
 
         <div class="card">
             <div class="card-body">
-                <h5><b>Tempo de Execução Médio (Te):</b> @Model.TempoMedioExecucao segundos</h5>
-                <h5><b>Tempo de Espera Médio (Tw):</b> @Model.TempoMedioEspera segundos</h5>
+                <h5><b>Tempo de Execução Médio (Te):</b> @Model.TempoMedioExecucao.ToString("N2") segundos</h5>
+                <h5><b>Tempo de Espera Médio (Tw):</b> @Model.TempoMedioEspera.ToString("N2") segundos</h5>
             </div>
         </div>
     }

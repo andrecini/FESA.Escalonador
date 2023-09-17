@@ -1,6 +1,7 @@
 ﻿document.addEventListener("DOMContentLoaded", function (event) {
     trocarTipo();
     validarEnvio();
+    validarResultado();
 });
 
 var chegadas = [];
@@ -127,4 +128,18 @@ function validarEnvio() {
             exibirErro("Selecione uma opção de escalonamento!");
         }
     });
+}
+
+function validarResultado() {
+    var sucesso = $("#sucesso").val();
+    var mensagem = $("#mensagem").val();
+
+    if (sucesso !=  undefined && mensagem != undefined) {
+        if (sucesso == 'true') {
+            exibirInformacao(mensagem);
+        }
+        else {
+            exibirErro(mensagem);
+        }
+    }
 }
