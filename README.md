@@ -15,7 +15,7 @@ A Aplicação em questão é uma ferramenta que permite realizar cálculos de es
 ## Testes Unitários 🧪
  A aplicação inclui testes unitários para garantir a precisão dos algoritmos de escalonamento implementados. A base de testes levou como parâmetro dos os Exercícios dessa lista:
 
- - 📚 [Download dos Exercícios](Assets/ExercíciosSistemasOperacionais.pdf)
+ - 📚 [Visualização dos Exercícios](Assets/ExercíciosSistemasOperacionais.pdf)
 
 ## Pré-requisitos ⚙️
 Antes de executar a aplicação, certifique-se de ter o seguinte instalado:
