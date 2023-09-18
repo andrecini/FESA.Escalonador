@@ -10,7 +10,7 @@ A Aplicação em questão é uma ferramenta que permite realizar cálculos de es
 - **RR (Round Robin):** O algoritmo Round Robin atribui um tempo de execução fixo para cada processo, e os processos são atendidos circularmente até sua conclusão.
 - **SRFT (Shortest Remaining Time First):** Semelhante ao SJF, o SFRT escalona os processos com base em seu tempo de execução restante, dando prioridade ao processo mais curto que ainda precisa ser concluído.
 - **PRIOc (Priority Scheduling com prioridade crescente):** Neste algoritmo, os processos são escalonados com base em sua prioridade, com prioridade crescente sendo mais alta.
-- **PRIOp (Priority Scheduling com prioridade decrescente):** Semelhante ao PRIOc, mas com prioridade decrescente sendo mais alta.
+- **PRIOp (Priority Scheduling com prioridade decrescente):** Semelhante ao PRIOc, porém, preemptivo.
 
 ## Testes Unitários 🧪
  A aplicação inclui testes unitários para garantir a precisão dos algoritmos de escalonamento implementados. A base de testes levou como parâmetro dos os Exercícios dessa lista:
