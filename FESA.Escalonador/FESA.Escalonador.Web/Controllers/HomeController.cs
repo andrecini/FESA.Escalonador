@@ -1,5 +1,6 @@
 ﻿using FESA.Escalonador.Web.Helpers;
 using FESA.Escalonador.Web.Models;
+using FESA.Escalonador.Web.Models.Result;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

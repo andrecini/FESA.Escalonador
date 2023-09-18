@@ -1,6 +1,7 @@
 ﻿using FESA.Escalonador.Domain.Models;
+using FESA.Escalonador.Web.Models.Result.Graphic;
 
-namespace FESA.Escalonador.Web.Models
+namespace FESA.Escalonador.Web.Models.Result
 {
     public class Resultado
     {
@@ -10,7 +11,7 @@ namespace FESA.Escalonador.Web.Models
         public ResumoExecucao Resumo { get; set; }
         public DadosGrafico DadosGrafico { get; set; }
         public decimal TempoMedioExecucao { get; set; }
-        public decimal TempoMedioEspera { get; set; }  
+        public decimal TempoMedioEspera { get; set; }
         public List<Execucao> Execucoes { get; set; }
 
         public void PreencherDados()

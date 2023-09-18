@@ -1,4 +1,4 @@
-﻿namespace FESA.Escalonador.Web.Models
+﻿namespace FESA.Escalonador.Web.Models.Result
 {
     public class DadosExecucao
     {

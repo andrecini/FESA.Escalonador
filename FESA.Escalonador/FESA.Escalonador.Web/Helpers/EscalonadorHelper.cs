@@ -1,7 +1,7 @@
 ﻿using FESA.Escalonador.Domain.Escalonadores;
 using FESA.Escalonador.Domain.Models;
 using FESA.Escalonador.Domain.Models.Enums;
-using FESA.Escalonador.Web.Models;
+using FESA.Escalonador.Web.Models.Result;
 
 namespace FESA.Escalonador.Web.Helpers
 {
