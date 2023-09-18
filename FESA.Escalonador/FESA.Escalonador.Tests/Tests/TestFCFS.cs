@@ -33,7 +33,7 @@ namespace FESA.Escalonador.Tests.Tests
             var dados = ExerciciosLista.ExercicioUm();
 
             // Act
-            var fcfs = new FCFS(dados.Chegadas, dados.Tamanhos);
+        var fcfs = new FCFS(dados.Chegadas, dados.Tamanhos);
             var tempoExecucaoMedio = fcfs.CalcularTempoDeExecucaoMedio();
             var tempoEsperaMedio = fcfs.CalcularTempoDeEsperaMedio();
 

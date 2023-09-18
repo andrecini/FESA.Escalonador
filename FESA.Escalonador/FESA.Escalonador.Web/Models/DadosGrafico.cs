@@ -4,12 +4,12 @@ namespace FESA.Escalonador.Web.Models
 {
     public class DadosGrafico
     {
-        public DadosGrafico(List<Execucao> execucoes) 
+        public DadosGrafico(List<Execucao> execucoes)
         {
             _execucoes = execucoes;
             DefinirValorTempoEmPorcentagem();
             DefinirExecucoesAlinhadas();
-            ExecucoesAlinhadas.Reverse();
+            OrdenarParaTabela();
         }
 
         public List<ExecucaoAlinhada> ExecucoesAlinhadas { get; set; }
@@ -37,6 +37,26 @@ namespace FESA.Escalonador.Web.Models
             }
         }
 
+        public void OrdenarParaTabela()
+        {
+            var ordenadas = new List<ExecucaoAlinhada>();
+            var contadorRegressivo = ExecucoesAlinhadas.Count(); ;
+
+            while (contadorRegressivo >= 1)
+            {
+                foreach (var e in ExecucoesAlinhadas)
+                {
+                    if (e.ExecucaoGrafico.IdProcesso == contadorRegressivo)
+                    {
+                        ordenadas.Add(e);
+                    }
+                }
+
+                contadorRegressivo--;
+            }
+
+            ExecucoesAlinhadas = ordenadas;
+        }
     }
 
     public class ExecucaoAlinhada
@@ -56,7 +76,7 @@ namespace FESA.Escalonador.Web.Models
         public void DefinirExecucaoGrafico()
         {
             ExecucaoGrafico = new ExecucaoGrafico();
-            ExecucaoGrafico.IdProcesso = _execucoes.FirstOrDefault().Id;
+            ExecucaoGrafico.IdProcesso = _execucoes.FirstOrDefault().IdProcesso;
             ExecucaoGrafico.PorcentagemInatividade = (_execucoes.FirstOrDefault().Comeco - _execucoes.FirstOrDefault().Espera) * _valorTempoEmPorcentagem;
             ExecucaoGrafico.PorcentagensExecucoes = new List<double>();
             ExecucaoGrafico.PorcentagensEspera = new List<double>();

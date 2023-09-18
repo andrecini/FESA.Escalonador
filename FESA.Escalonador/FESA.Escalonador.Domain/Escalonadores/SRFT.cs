@@ -49,7 +49,7 @@ namespace FESA.Escalonador.Domain.Escalonadores
                 }
                 else if (ultimaExecucao.IdProcesso == processoEmExecucao.Id)
                 {
-                    var execucao = RetornarExecucaoExistente(contador, processoEmExecucao, tempo, ultimaExecucao, execucoesOrdenadas);
+                    var execucao = RetomarExecucaoExistente(contador, processoEmExecucao, tempo, ultimaExecucao, execucoesOrdenadas);
 
                     var index = execucoesOrdenadas.IndexOf(execucoesOrdenadas.LastOrDefault());
                     execucoesOrdenadas[index] = execucao;
@@ -94,7 +94,7 @@ namespace FESA.Escalonador.Domain.Escalonadores
             return execucao;
         }
 
-        private Execucao RetornarExecucaoExistente(int contador, Processo processoEmExecucao,
+        private Execucao RetomarExecucaoExistente(int contador, Processo processoEmExecucao,
             int tempo, Execucao ultimaExecucao, List<Execucao> execucoesOrdenadas)
         {
             var execucao = ultimaExecucao;

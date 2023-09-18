@@ -18,6 +18,7 @@ namespace FESA.Escalonador.Web.Models
             PreencherDadosExecucao();
             PreencherResumoExecucao();
             PreencherDadosGrafico();
+            OrdenarParaTabela();
         }
 
         private void PreencherDadosExecucao()
@@ -32,6 +33,7 @@ namespace FESA.Escalonador.Web.Models
                 var execucaoAtual = Execucoes.FirstOrDefault();
                 execucoesRelacionadas = Execucoes.Where(x => x.IdProcesso == execucaoAtual.IdProcesso).ToList();
 
+                dados.IdProcesso = execucaoAtual.IdProcesso;
                 dados.Processo = $"P{execucaoAtual.IdProcesso}";
                 dados.Termino = execucoesRelacionadas.LastOrDefault().Fim;
                 dados.Ativo = execucoesRelacionadas.LastOrDefault().Fim - (execucoesRelacionadas.FirstOrDefault().Comeco - execucoesRelacionadas.FirstOrDefault().Espera);
@@ -43,8 +45,32 @@ namespace FESA.Escalonador.Web.Models
 
             }
 
+            DadosExecucoes.OrderBy(x => x.IdProcesso);
             Execucoes.AddRange(backup);
         }
+
+        public void OrdenarParaTabela()
+        {
+            var ordenadas = new List<DadosExecucao>();
+            var contadorRegressivo = DadosExecucoes.Count(); ;
+
+            while (contadorRegressivo >= 1)
+            {
+                foreach (var e in DadosExecucoes)
+                {
+                    if (e.IdProcesso == contadorRegressivo)
+                    {
+                        ordenadas.Add(e);
+                    }
+                }
+
+                contadorRegressivo--;
+            }
+
+            ordenadas.Reverse();
+            DadosExecucoes = ordenadas;
+        }
+
 
         private void PreencherResumoExecucao()
         {

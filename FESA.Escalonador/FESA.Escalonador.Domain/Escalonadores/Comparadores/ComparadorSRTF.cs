@@ -19,12 +19,7 @@ namespace FESA.Escalonador.Domain.Escalonadores.Comparadores
         {
             if (x.Chegada <= tempo && y.Chegada <= tempo)
             {
-                if (x.Tamanho != y.Tamanho)
-                {
-                    return x.Tamanho.CompareTo(y.Tamanho);
-                }
-
-                return y.Prioridade.CompareTo(x.Prioridade);
+                return x.Tamanho.CompareTo(y.Tamanho);
             }
             else
             {
